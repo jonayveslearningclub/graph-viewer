@@ -14,43 +14,41 @@
   <div id="ggb-element"></div>
   <script>
     const ggbApp = new GGBApplet({
-      appName: "classic",
-      showToolBar: false,
-      showMenuBar: false,
-      showAlgebraInput: false,
-      showAlgebraView: false,
-      showResetIcon: false,
-      enableLabelDrags: false,
-      enableShiftDragZoom: true,
-      showZoomButtons: false,
-      scaleContainerClass: "",
-    }, true);
+  appName: "classic",
+  showToolBar: false,
+  showMenuBar: false,
+  showAlgebraInput: false,
+  showAlgebraView: false,
+  showResetIcon: false,
+  enableLabelDrags: false,
+  enableShiftDragZoom: true,
+  showZoomButtons: false,
+  scaleContainerClass: "",
+  appletOnLoad(api) {
+    api.reset();
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const raw = urlParams.get("points");
+    if (!raw) return;
+
+    const decoded = decodeURIComponent(raw);
+    const commands = decoded.split(";").map(cmd => cmd.trim()).filter(cmd => cmd);
+
+    commands.forEach(cmd => {
+      try {
+        api.evalCommand(cmd);
+      } catch (err) {
+        console.warn("GeoGebra command failed:", cmd, err);
+      }
+    });
+
+    document.body.setAttribute("data-ready", "true");
+  }
+}, true);
     window.addEventListener("load", () => {
       ggbApp.inject('ggb-element');
 
-      setTimeout(() => {
-        try {
-          ggbApplet.reset();
 
-          const urlParams = new URLSearchParams(window.location.search);
-          const raw = urlParams.get("points");
-          if (!raw) return;
-
-          const decoded = decodeURIComponent(raw);
-          const commands = decoded.split(";").map(cmd => cmd.trim()).filter(cmd => cmd);
-
-          commands.forEach(cmd => {
-            try {
-              ggbApplet.evalCommand(cmd);
-            } catch (err) {
-              console.warn("GeoGebra command failed:", cmd, err);
-            }
-          });
-        } catch (e) {
-          console.error("Error running setup:", e);
-        }
-      }, 500);
     });
   </script>
 </body>
