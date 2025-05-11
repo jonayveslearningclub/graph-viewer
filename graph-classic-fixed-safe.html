@@ -24,9 +24,6 @@
       enableShiftDragZoom: true,
       showZoomButtons: false,
       scaleContainerClass: "",
-      appletOnLoad(api) {
-        api.setCoordSystem(-15, 15, -15, 15); // ✅ Safe place to set view
-      }
     }, true);
 
     window.addEventListener("load", () => {
