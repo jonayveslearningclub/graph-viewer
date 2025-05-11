@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>GeoGebra Graph Viewer</title>
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100%;
+      }
+      #ggb-element {
+        width: 100%;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ggb-element"></div>
+    <script>
+      var params = {
+        appName: 'geometry',
+        width: 800,
+        height: 600,
+        showToolBar: false,
+        showAlgebraInput: false,
+        showMenuBar: false,
+        enableShiftDragZoom: false,
+        showResetIcon: false,
+        id: 'ggbApplet'
+      };
+
+      var ggbApplet = new GGBApplet(params, true);
+      window.addEventListener('load', function () {
+        ggbApplet.inject('ggb-element');
+
+        setTimeout(() => {
+          try {
+            const urlParams = new URLSearchParams(window.location.search);
+            const raw = urlParams.get('points');
+            if (!raw) return;
+
+            const decoded = decodeURIComponent(raw);
+            const commands = decoded.split(';').map(e => e.trim()).filter(e => e);
+            commands.forEach(cmd => {
+              try {
+                ggbApplet.evalCommand(cmd);
+              } catch (err) {
+                console.warn('GeoGebra command failed:', cmd, err);
+              }
+            });
+          } catch (err) {
+            console.error('Problem parsing URL params:', err);
+          }
+        }, 500);
+      });
+    </script>
+  </body>
+</html>
