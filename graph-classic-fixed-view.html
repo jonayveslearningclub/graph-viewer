@@ -28,6 +28,9 @@
       enableRightClick: false,
       errorDialogsActive: true,
       useBrowserForJS: false
+      appletOnLoad: function(api) {
+    api.setCoordSystem(-15, 15, -15, 15);
+  }
     }, true);
 
     window.addEventListener("load", () => {
