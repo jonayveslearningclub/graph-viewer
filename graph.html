@@ -28,8 +28,9 @@
         showToolBar: false,
         showAlgebraInput: false,
         showMenuBar: false,
-        enableShiftDragZoom: false,
         showResetIcon: false,
+        enableShiftDragZoom: false,
+        scaleContainerClass: '',
         id: 'ggbApplet'
       };
 
@@ -45,6 +46,11 @@
 
             const decoded = decodeURIComponent(raw);
             const commands = decoded.split(';').map(e => e.trim()).filter(e => e);
+
+            // Set axis visibility and fixed view window
+            ggbApplet.setAxesVisible(true, true);
+            ggbApplet.setCoordSystem(-10, 10, -10, 10);
+
             commands.forEach(cmd => {
               try {
                 ggbApplet.evalCommand(cmd);
@@ -55,7 +61,7 @@
           } catch (err) {
             console.error('Problem parsing URL params:', err);
           }
-        }, 500);
+        }, 600);
       });
     </script>
   </body>
