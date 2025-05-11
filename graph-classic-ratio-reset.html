@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>GeoGebra Graph Viewer</title>
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: white;
+      }
+      #ggb-element {
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ggb-element"></div>
+
+    <script>
+      const params = {
+        appName: "classic",
+        width: 800,
+        height: 600,
+        showToolBar: false,
+        showAlgebraInput: false,
+        showMenuBar: false,
+        enableShiftDragZoom: false,
+        scaleContainerClass: "",
+        showResetIcon: false,
+        showZoomButtons: false,
+        allowUpscale: true,
+        appletOnLoad(api) {
+          api.setCoordSystem(-8, 8, -8, 8);
+        },
+        id: "ggbApplet"
+      };
+
+      const ggbApplet = new GGBApplet(params, true);
+
+      window.addEventListener("load", function () {
+        ggbApplet.inject("ggb-element");
+
+        setTimeout(() => {
+          try {
+            ggbApplet.reset(); // ✅ Clear all previous objects
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const raw = urlParams.get("points");
+            if (!raw) return;
+
+            const decoded = decodeURIComponent(raw);
+            const commands = decoded.split(";").map(e => e.trim()).filter(e => e.length > 0);
+
+            commands.forEach(cmd => {
+              try {
+                ggbApplet.evalCommand(cmd);
+              } catch (err) {
+                console.warn("GeoGebra command failed:", cmd, err);
+              }
+            });
+          } catch (error) {
+            console.error("GeoGebra injection or command error:", error);
+          }
+        }, 500);
+      });
+    </script>
+  </body>
+</html>
