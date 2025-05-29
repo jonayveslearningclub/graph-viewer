@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plotly Viewer</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body { margin: 0; padding: 0; font-family: sans-serif; }
+    #plot { width: 100vw; height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="plot"></div>
+  <script>
+    function getParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    function decodePlotlyCode(code) {
+      try {
+        const decoded = decodeURIComponent(escape(atob(code)));
+        const fig = Function('"use strict"; return (' + decoded + ')')();
+        return fig;
+      } catch (err) {
+        console.error("Failed to parse Plotly code:", err);
+        return null;
+      }
+    }
+
+    const codeParam = getParam('code');
+    if (codeParam) {
+      const fig = decodePlotlyCode(codeParam);
+      if (fig && fig.data && fig.layout) {
+        Plotly.newPlot('plot', fig.data, fig.layout);
+      } else {
+        document.body.innerHTML = '<p style="color:red;">Invalid Plotly code.</p>';
+      }
+    } else {
+      document.body.innerHTML = '<p style="color:red;">Missing ?code= parameter.</p>';
+    }
+  </script>
+</body>
+</html>
