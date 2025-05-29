@@ -19,11 +19,11 @@
 
     function decodePlotlyCode(code) {
       try {
-        const decoded = decodeURIComponent(escape(atob(code)));
-        const fig = Function('"use strict"; return (' + decoded + ')')();
-        return fig;
+        const decoded = decodeURIComponent(atob(code));
+        return JSON.parse(decoded);  // Clean and safe parse
       } catch (err) {
         console.error("Failed to parse Plotly code:", err);
+        document.body.innerHTML = '<p style="color:red;">Invalid Plotly code format.</p>';
         return null;
       }
     }
@@ -34,10 +34,10 @@
       if (fig && fig.data && fig.layout) {
         Plotly.newPlot('plot', fig.data, fig.layout);
       } else {
-        document.body.innerHTML = '<p style="color:red;">Invalid Plotly code.</p>';
+        document.body.innerHTML = '<p style="color:red;">Invalid Plotly figure structure.</p>';
       }
     } else {
-      document.body.innerHTML = '<p style="color:red;">Missing ?code= parameter.</p>';
+      document.body.innerHTML = '<p style="color:red;">Missing ?code= parameter in the URL.</p>';
     }
   </script>
 </body>
