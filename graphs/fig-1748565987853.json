@@ -1,0 +1,94 @@
+{
+  "data": [
+    {
+      "type": "scatter",
+      "mode": "markers+text",
+      "x": [3, 0, 3, 0, -3, -1, 1],
+      "y": [3, 0, -2, -2, -2, 0, 0],
+      "text": ["P", "Q", "R", "S", "T", "U", "V"],
+      "textposition": "top center",
+      "marker": {
+        "size": 10,
+        "color": "black"
+      }
+    },
+    {
+      "type": "scatter",
+      "mode": "lines",
+      "x": [-10, 10],
+      "y": [0, 0],
+      "line": {
+        "color": "black",
+        "width": 1
+      },
+      "showlegend": false
+    },
+    {
+      "type": "scatter",
+      "mode": "lines",
+      "x": [0, 0],
+      "y": [-10, 10],
+      "line": {
+        "color": "black",
+        "width": 1
+      },
+      "showlegend": false
+    },
+    {
+      "type": "scatter",
+      "mode": "text",
+      "x": [9, 0.5, -0.5, 0.5],
+      "y": [0.5, 9, 0.5, -9],
+      "text": ["E", "N", "W", "S"],
+      "textposition": "middle center",
+      "showlegend": false
+    }
+  ],
+  "layout": {
+    "title": "Location and Movement<br>8. Look at the grid.<br>a. Write directions to move from point P to point S.<br>b. Compare your directions with someone else. Are they the same?",
+    "xaxis": {
+      "range": [-10, 10],
+      "dtick": 1,
+      "zeroline": true,
+      "zerolinecolor": "black"
+    },
+    "yaxis": {
+      "range": [-10, 10],
+      "dtick": 1,
+      "zeroline": true,
+      "zerolinecolor": "black",
+      "scaleanchor": "x",
+      "scaleratio": 1
+    },
+    "width": 600,
+    "height": 600,
+    "autosize": true,
+    "margin": {
+      "l": 50,
+      "r": 50,
+      "t": 100,
+      "b": 50
+    },
+    "showlegend": false,
+    "annotations": [
+      {
+        "x": 6,
+        "y": 0,
+        "xref": "x",
+        "yref": "y",
+        "text": "Question: Write the directions to<br>move from point P to point S<br>using the cardinal directions (N,S,E,W).",
+        "showarrow": false,
+        "align": "left",
+        "bgcolor": "#ffffff",
+        "bordercolor": "#000000",
+        "borderwidth": 1,
+        "borderpad": 4
+      }
+    ],
+    "grid": {
+      "rows": 1,
+      "columns": 1,
+      "pattern": "independent"
+    }
+  }
+}
