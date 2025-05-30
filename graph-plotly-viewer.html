@@ -22,25 +22,25 @@
   <div id="graph">Loading...</div>
 
   <script>
-  const file = new URLSearchParams(window.location.search).get("file");
+    const file = new URLSearchParams(window.location.search).get("file");
 
-  if (!file) {
-    document.getElementById("graph").innerText = "No file specified.";
-  } else {
-    const filePath = 'graphs/' + file;
+    if (!file) {
+      document.getElementById("graph").innerText = "No file specified.";
+    } else {
+      const filePath = 'graphs/' + file;
 
-    fetch(filePath)
-      .then(response => {
-        if (!response.ok) throw new Error("File not found");
-        return response.json();
-      })
-      .then(fig => {
-        Plotly.newPlot("graph", fig.data, fig.layout);
-      })
-      .catch(err => {
-        document.getElementById("graph").innerText = "Error: " + err.message;
-      });
-  }
-</script>
+      fetch(filePath)
+        .then(response => {
+          if (!response.ok) throw new Error("File not found");
+          return response.json();
+        })
+        .then(fig => {
+          Plotly.newPlot("graph", fig.data, fig.layout);
+        })
+        .catch(err => {
+          document.getElementById("graph").innerText = "Error: " + err.message;
+        });
+    }
+  </script>
 </body>
 </html>
