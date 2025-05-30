@@ -1,0 +1,152 @@
+{
+  "data": [
+    {
+      "type": "scatter",
+      "mode": "markers+text",
+      "x": [0, 2, 4, 2, 0, 3, 5],
+      "y": [0, 3, 0, -2, -2, 1, -2],
+      "marker": {
+        "size": 10,
+        "color": "black"
+      },
+      "text": ["P", "Q", "R", "S", "T", "U", "V"],
+      "textposition": "top right",
+      "hoverinfo": "text"
+    },
+    {
+      "type": "scatter",
+      "mode": "lines",
+      "x": [-10, 10],
+      "y": [0, 0],
+      "line": {
+        "color": "black",
+        "width": 1
+      },
+      "hoverinfo": "none"
+    },
+    {
+      "type": "scatter",
+      "mode": "lines",
+      "x": [0, 0],
+      "y": [-10, 10],
+      "line": {
+        "color": "black",
+        "width": 1
+      },
+      "hoverinfo": "none"
+    },
+    {
+      "type": "scatter",
+      "mode": "lines",
+      "x": [-8, 8],
+      "y": [-8, -8],
+      "line": {
+        "color": "rgba(0,0,0,0.1)",
+        "width": 1
+      },
+      "hoverinfo": "none",
+      "showlegend": false
+    },
+    {
+      "type": "scatter",
+      "mode": "none",
+      "x": [-9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "y": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "text": ["-9", "-8", "-7", "-6", "-5", "-4", "-3", "-2", "-1", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      "textposition": "bottom center",
+      "textfont": {
+        "size": 10
+      },
+      "hoverinfo": "none",
+      "showlegend": false
+    },
+    {
+      "type": "scatter",
+      "mode": "none",
+      "x": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "y": [-9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "text": ["-9", "-8", "-7", "-6", "-5", "-4", "-3", "-2", "-1", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      "textposition": "middle left",
+      "textfont": {
+        "size": 10
+      },
+      "hoverinfo": "none",
+      "showlegend": false
+    }
+  ],
+  "layout": {
+    "title": "Location and Movement<br>Write directions to move from point Q to point S using the grid and compass directions (N, S, E, W).",
+    "autosize": true,
+    "showlegend": false,
+    "xaxis": {
+      "range": [-10, 10],
+      "zeroline": false,
+      "showgrid": true,
+      "gridcolor": "rgba(0,0,0,0.1)",
+      "tickmode": "array",
+      "tickvals": [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "ticktext": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "showticklabels": false
+    },
+    "yaxis": {
+      "range": [-10, 10],
+      "zeroline": false,
+      "showgrid": true,
+      "gridcolor": "rgba(0,0,0,0.1)",
+      "tickmode": "array",
+      "tickvals": [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "ticktext": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "showticklabels": false
+    },
+    "annotations": [
+      {
+        "x": 0,
+        "y": 6,
+        "text": "N",
+        "showarrow": false,
+        "font": {
+          "size": 16,
+          "color": "black"
+        }
+      },
+      {
+        "x": 0,
+        "y": -6,
+        "text": "S",
+        "showarrow": false,
+        "font": {
+          "size": 16,
+          "color": "black"
+        }
+      },
+      {
+        "x": 6,
+        "y": 0,
+        "text": "E",
+        "showarrow": false,
+        "font": {
+          "size": 16,
+          "color": "black"
+        }
+      },
+      {
+        "x": -6,
+        "y": 0,
+        "text": "W",
+        "showarrow": false,
+        "font": {
+          "size": 16,
+          "color": "black"
+        }
+      }
+    ],
+    "margin": {
+      "l": 40,
+      "r": 40,
+      "t": 80,
+      "b": 40
+    },
+    "height": 500,
+    "width": 600
+  }
+}
