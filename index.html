@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Graph Viewer</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+      }
+      #graph {
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="graph"></div>
+    <script>
+      async function loadGraph() {
+        const file = new URLSearchParams(window.location.search).get("file");
+        if (!file) {
+          document.body.innerHTML = "<h2>⚠️ Missing ?file= parameter in the URL.</h2>";
+          return;
+        }
+
+        const url = `https://raw.githubusercontent.com/jonayveslearningclub/graph-viewer/main/${file}`;
+
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error("File not found or cannot be accessed.");
+          }
+          const fig = await response.json();
+          Plotly.newPlot("graph", fig.data, fig.layout);
+        } catch (error) {
+          document.body.innerHTML = "<h2>⚠️ Error loading graph:</h2><p>" + error.message + "</p>";
+        }
+      }
+
+      loadGraph();
+    </script>
+  </body>
+</html>
