@@ -27,7 +27,7 @@
   if (!file) {
     document.getElementById("graph").innerText = "No file specified.";
   } else {
-    fetch('./' + file)
+    fetch('./graphs/' + file)
       .then(response => {
         if (!response.ok) throw new Error("File not found");
         return response.json();
