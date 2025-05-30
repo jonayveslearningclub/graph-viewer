@@ -1,0 +1,1 @@
+{"data":[{"x":["Maya","Kevin","Elena","Jason"],"y":[2,6,3,4],"type":"bar","marker":{"color":"darkblue"}}],"layout":{"title":{"text":"How many pets are in each home?","font":{"size":16}},"xaxis":{"title":"Person"},"yaxis":{"title":"Number of Pets","range":[0,8]},"width":800,"height":600,"margin":{"l":60,"r":50,"t":80,"b":60}}}
