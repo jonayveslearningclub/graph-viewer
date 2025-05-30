@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "x": [0, 1, 2, 3],
+      "y": [0, 1, 4, 9],
+      "type": "scatter",
+      "mode": "lines+markers",
+      "name": "y = x²"
+    }
+  ],
+  "layout": {
+    "title": "Sample Graph: y = x²",
+    "xaxis": { "range": [-1, 4] },
+    "yaxis": { "range": [-1, 10] }
+  }
+}
