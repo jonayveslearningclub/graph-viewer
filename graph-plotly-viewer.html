@@ -10,6 +10,7 @@
       padding: 0;
       height: 100%;
       width: 100%;
+      font-family: sans-serif;
     }
     #graph {
       width: 100%;
@@ -26,7 +27,7 @@
     if (!file) {
       document.getElementById("graph").innerText = "No file specified.";
     } else {
-      fetch(`graphs/${file}`)
+      fetch(file)
         .then(response => {
           if (!response.ok) throw new Error("File not found");
           return response.json();
