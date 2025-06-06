@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>p5.js Graph Viewer</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <script>
+    // Get URL parameter
+    function getFileParam() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('file');
+    }
+
+    const file = getFileParam();
+
+    if (file) {
+      const script = document.createElement('script');
+      script.src = `https://jonayveslearningclub.github.io/${file}`;
+      script.type = "text/javascript";
+      document.body.appendChild(script);
+    } else {
+      document.body.innerHTML = "<h2>No file provided.</h2>";
+    }
+  </script>
+</body>
+</html>
